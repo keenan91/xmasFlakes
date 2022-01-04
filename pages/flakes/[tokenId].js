@@ -18,7 +18,7 @@ import {
   Spinner,
 } from '@chakra-ui/react'
 import {ColorModeScript} from '@chakra-ui/react'
-import theme from '.././theme'
+import theme from '../.././theme'
 import {FaMoon} from 'react-icons/fa'
 import {BsSun} from 'react-icons/bs'
 import {useMoralis, useERC20Balances, useNFTBalances} from 'react-moralis'
