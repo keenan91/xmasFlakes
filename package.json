@@ -17,11 +17,13 @@
     "framer-motion": "^4.1.17",
     "moralis": "^0.0.142",
     "next": "12.0.4",
+    "particles.js": "^2.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-hot-toast": "^2.1.1",
     "react-icons": "^4.3.1",
     "react-moralis": "^0.3.0",
+    "react-responsive-canvas": "^1.0.2",
     "sharp": "^0.29.3",
     "web3": "^1.6.1",
     "web3modal": "^1.9.4"
