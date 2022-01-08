@@ -63,14 +63,7 @@ export default function Home() {
     '...' +
     account?.substring(account.length - 4, account.length)
   const {colorMode, toggleColorMode} = useColorMode()
-  useLayoutEffect(() => {
-    function updateSize() {
-      setSize([window.innerWidth, window.innerHeight])
-    }
-    window.addEventListener('resize', updateSize)
-    updateSize()
-    return () => window.removeEventListener('resize', updateSize)
-  }, [])
+  useLayoutEffect(() => {}, [])
 
   //testfunction()
   const connect = async () => {
@@ -169,6 +162,12 @@ export default function Home() {
 
   useEffect(() => {
     getMintCountAndTokenOwners()
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight])
+    }
+    window.addEventListener('resize', updateSize)
+    updateSize()
+    return () => window.removeEventListener('resize', updateSize)
   }, [isAuthenticated])
 
   return (

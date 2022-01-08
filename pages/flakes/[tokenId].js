@@ -238,17 +238,16 @@ export default function TokenId({nft}) {
     console.log(finalMetadata)
   }
 
-  useLayoutEffect(() => {
+  useLayoutEffect(() => {}, [])
+
+  useEffect(() => {
+    fetchMetaDatas()
     function updateSize() {
       setSize([window.innerWidth, window.innerHeight])
     }
     window.addEventListener('resize', updateSize)
     updateSize()
     return () => window.removeEventListener('resize', updateSize)
-  }, [])
-
-  useEffect(() => {
-    fetchMetaDatas()
   }, [])
 
   return (
