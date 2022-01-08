@@ -20,15 +20,15 @@ import {
 } from '@chakra-ui/react'
 
 export default function Header({png}) {
-  console.log('Header Rendered')
-
   let idTag = 'particles-js-canvas-el' + png
   console.log(idTag)
   if (typeof window !== 'undefined') {
     var pJS = function (tag_id, params) {
       var canvas_el = document.getElementById(idTag)
-
-      /* particles.js variables with default values */
+      if (canvas_el == null) {
+        return
+      } else {
+      }
       this.pJS = {
         canvas: {
           el: canvas_el,
@@ -36,7 +36,7 @@ export default function Header({png}) {
           h: canvas_el.offsetHeight,
         },
         particles: {
-          number: {value: 400, density: {enable: true, value_area: 800}},
+          number: {value: 700, density: {enable: true, value_area: 800}},
           color: {
             value: '#fff',
           },
@@ -52,7 +52,7 @@ export default function Header({png}) {
             anim: {enable: false, speed: 1, opacity_min: 0.1, sync: false},
           },
           size: {
-            value: 10,
+            value: 7,
             random: true,
             anim: {enable: false, speed: 40, size_min: 0.1, sync: false},
           },
@@ -65,7 +65,7 @@ export default function Header({png}) {
           },
           move: {
             enable: true,
-            speed: 3,
+            speed: 4,
             direction: 'bottom',
             random: false,
             straight: false,
@@ -1591,6 +1591,7 @@ export default function Header({png}) {
       }
       requestAnimationFrame(update)
     } catch (error) {}
+    /* particles.js variables with default values */
   }
 
   return (

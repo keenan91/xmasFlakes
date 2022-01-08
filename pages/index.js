@@ -38,7 +38,7 @@ let signer
 let contract
 
 const contractAddress =
-  '0x4e267B5494a828c628DBa377DEC523ba8F541A35'.toLowerCase()
+  '0x9123Da6F29A6CD305Da6c7E20692eFBC9EF4A434'.toLowerCase()
 export default function Home() {
   const [size, setSize] = useState([0, 0])
   const [state, setState] = useState('idle')
@@ -58,6 +58,10 @@ export default function Home() {
   } = useNFTBalances()
   const {authenticate, isAuthenticated, logout, account, chainId, user} =
     useMoralis()
+  let trucatedAccount =
+    account?.substring(0, 6) +
+    '...' +
+    account?.substring(account.length - 4, account.length)
   const {colorMode, toggleColorMode} = useColorMode()
   useLayoutEffect(() => {
     function updateSize() {
@@ -88,11 +92,26 @@ export default function Home() {
       setWalletResponsiveGridCols({
         grid: [1, 1, 1, 1, 1],
         width: ['70%', '70%', '60%', '50%', '40%'],
+        //size: [size[0] / 3, size[0] / 1.5, size[0] / 1.5, size[0] / 2],
       })
     } else if (tokenIdBalance == 2) {
-      setWalletResponsiveGridCols({grid: [1, 1, 2, 2, 2], width: ['70%']})
-    } else if (tokenIdBalance == 3) {
-      setWalletResponsiveGridCols({grid: [1, 1, 2, 2, 3], width: ['70%']})
+      setWalletResponsiveGridCols({
+        grid: [1, 1, 1, 2, 2],
+        width: ['95%', '95%', '90%', '85%', '80%'],
+        //size: [size[0] / 1.2, size[0] / 1.5, size[0] / 2.5, size[0] / 3.5],
+      })
+    } else if (tokenIdBalance >= 3) {
+      setWalletResponsiveGridCols({
+        grid: [1, 1, 1, 2, 2],
+        width: ['95%', '95%', '90%', '70%', '70%'],
+        // size: [size[0] / 1.2, size[0] / 1.5, size[0] / 2.5, size[0] / 3.5],
+      })
+    } else if (tokenIdBalance == 0) {
+      setWalletResponsiveGridCols({
+        grid: [1, 1, 1, 1, 1],
+        width: ['70%', '70%', '90%', '90%', '90%'],
+        //size: [size[0] / 2, size[0] / 1.5, size[0] / 1.5, size[0] / 2],
+      })
     }
   }
 
@@ -184,7 +203,7 @@ export default function Home() {
             </Button>
           ) : (
             <Flex alignItems="center">
-              <Text mr="10px">{account}</Text>
+              <Text mr="10px">{trucatedAccount}</Text>
               <Button variant="ghost" colorScheme="blue" onClick={logoutUser}>
                 Logout
               </Button>
@@ -194,22 +213,28 @@ export default function Home() {
       </Flex>
 
       <Box h={size[0] / 3.5}>
-        <Header png={15} height={state[0] / 8}></Header>
+        <Header png={97} height={state[0] / 8}></Header>
       </Box>
 
-      <Heading color="lightblue" align="center" mb="5px" mt="5px">
+      <Heading
+        color="lightblue"
+        align="center"
+        mb="5px"
+        mt="10px"
+        fontSize={['20px', '25px', '30px', '35px']}
+      >
         The Christmas spirit lasts all year long
       </Heading>
       <Text
         align="center"
         color="lightblue"
         mb={['5px', '7px', '10px']}
-        fontSize={['md', 'md', 'lg']}
+        fontSize={['sm', 'md', 'lg']}
       >
         {' '}
-        Enjoy 1 free Snowflakes per wallet.
+        Enjoy 2 free Snowflakes per wallet.
       </Text>
-      <Box zIndex="4" width={['80%', '80%', '80%']} m="auto">
+      <Box zIndex="4" width={['90%', '90%', '80%']} m="auto">
         <Flex alignItems="center" justify="center">
           <Box h={size[0] / 5} w={size[0] / 5}>
             <SnowFlake png={100}></SnowFlake>
@@ -218,8 +243,8 @@ export default function Home() {
             direction="column"
             alignItems="center"
             justify="center"
-            h={size[0] / 5}
-            w={size[0] / 5}
+            h={[size[0] / 3, size[0] / 5, size[0] / 5]}
+            w={[size[0] / 3, size[0] / 5, size[0] / 5]}
           >
             <Button
               fontSize={['3xl', '3xl', '4xl', '5xl', '5xl']}
@@ -291,29 +316,33 @@ export default function Home() {
       <main>
         {isAuthenticated ? (
           <>
-            <Divider mt="20px" mb="20px" />
             {tokenIdOwned ? (
-              <Heading color="lightblue" mb="20px" align="center">
+              <Heading
+                color="lightblue"
+                mb="20px"
+                align="center"
+                mt={['10px', '10px', '10px', '15px', '20px']}
+                fontSize={['20px', '25px', '30px', '35px']}
+              >
                 My Christmas Flakes
               </Heading>
             ) : null}
 
             <Box w={WalletResponsiveGridCols.width} m="auto" mb="50px">
-              <SimpleGrid columns={WalletResponsiveGridCols.grid} spacing={10}>
+              <SimpleGrid
+                columns={WalletResponsiveGridCols.grid}
+                spacing={['20px', '20px', '20px', '20px']}
+              >
                 {tokenIdOwned &&
                   tokenIdOwned.map((nft, index) => {
                     return (
-                      <Box
+                      <Flex
                         key={index}
-                        boxShadow="md"
-                        rounded="md"
-                        _hover={{
-                          boxShadow: '0 8px 16px 0 rgba(0,0,0,0.2)',
-                          transition: '0.3s',
-                        }}
+                        justify="center"
+                        direction="column"
+                        alignItems="center"
                       >
                         <Box
-                          key={index}
                           boxShadow="md"
                           rounded="md"
                           _hover={{
@@ -321,39 +350,48 @@ export default function Home() {
                             transition: '0.3s',
                           }}
                         >
-                          <Box className={styles.videoWrapper}>
-                            <iframe
-                              src={
-                                'https://gateway.pinata.cloud/ipfs/QmXL6pVeNPGodVsKY8eQhLfK3vWpDrRRSTxJGqJTkaJ31q/' +
-                                nft +
-                                '.html'
-                              }
-                            ></iframe>
-                          </Box>
-                        </Box>
-
-                        <Flex justify="space-around" alignItems="center">
-                          <Text
-                            color="lightblue"
-                            fontWeight="bold"
-                            fontSize="xl"
+                          <Box
+                            h={[
+                              size[0] / 1.2,
+                              size[0] / 1.5,
+                              size[0] / 2,
+                              size[0] / 3,
+                            ]}
+                            w={[
+                              size[0] / 1.2,
+                              size[0] / 1.5,
+                              size[0] / 2,
+                              size[0] / 3,
+                            ]}
                           >
-                            Christmas Flake #{nft}
-                          </Text>
-                          <Link href={`/flakes/${nft}`}>
-                            <a>
-                              <Button
-                                variant="ghost"
-                                color="lightblue"
-                                fontSize="xl"
-                                fontWeight="bold"
-                              >
-                                View
-                              </Button>
-                            </a>
-                          </Link>
-                        </Flex>
-                      </Box>
+                            <SnowFlake
+                              className={styles.card}
+                              png={nft}
+                            ></SnowFlake>
+                          </Box>
+                          <Flex justify="space-around" alignItems="center">
+                            <Text
+                              color="lightblue"
+                              fontWeight="bold"
+                              fontSize="xl"
+                            >
+                              Christmas Flake #{nft}
+                            </Text>
+                            <Link href={`/flakes/${nft}`}>
+                              <a>
+                                <Button
+                                  variant="ghost"
+                                  color="lightblue"
+                                  fontSize="xl"
+                                  fontWeight="bold"
+                                >
+                                  View
+                                </Button>
+                              </a>
+                            </Link>
+                          </Flex>
+                        </Box>
+                      </Flex>
                     )
                   })}
               </SimpleGrid>

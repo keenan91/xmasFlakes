@@ -25,8 +25,10 @@ export default function SnowFlake({png}) {
   if (typeof window !== 'undefined') {
     var pJS = function (tag_id, params) {
       var canvas_el = document.getElementById(idTag)
-
-      /* particles.js variables with default values */
+      if (canvas_el == null) {
+        return
+      } else {
+      }
       this.pJS = {
         canvas: {
           el: canvas_el,
@@ -34,7 +36,7 @@ export default function SnowFlake({png}) {
           h: canvas_el.offsetHeight,
         },
         particles: {
-          number: {value: 400, density: {enable: true, value_area: 800}},
+          number: {value: 1000, density: {enable: true, value_area: 800}},
           color: {
             value: '#fff',
           },
@@ -50,7 +52,7 @@ export default function SnowFlake({png}) {
             anim: {enable: false, speed: 1, opacity_min: 0.1, sync: false},
           },
           size: {
-            value: 10,
+            value: 5,
             random: true,
             anim: {enable: false, speed: 40, size_min: 0.1, sync: false},
           },
@@ -63,7 +65,7 @@ export default function SnowFlake({png}) {
           },
           move: {
             enable: true,
-            speed: 3,
+            speed: 4,
             direction: 'bottom',
             random: false,
             straight: false,
@@ -1589,6 +1591,7 @@ export default function SnowFlake({png}) {
       }
       requestAnimationFrame(update)
     } catch (error) {}
+    /* particles.js variables with default values */
   }
 
   return (
@@ -1605,6 +1608,8 @@ export default function SnowFlake({png}) {
             '.png' +
             ')',
           backgroundSize: 'cover',
+          borderTopRightRadius: '10px',
+          borderTopLeftRadius: '10px',
         }}
       ></canvas>
     </>

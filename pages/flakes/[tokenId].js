@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from '../../styles/Home.module.css'
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useLayoutEffect} from 'react'
 import {
   Box,
   Text,
@@ -21,7 +21,7 @@ import theme from '../.././theme'
 import {FaMoon} from 'react-icons/fa'
 import {BsSun} from 'react-icons/bs'
 import {useMoralis, useERC20Balances, useNFTBalances} from 'react-moralis'
-
+import SnowFlake from '../../componets/SnowFlake'
 const rarity = [
   {trait: 'AfricanViolet', weight: '1', occurrence: '4.50'},
   {trait: 'AtomicTangerine', weight: '1', occurrence: '4.59'},
@@ -150,9 +150,14 @@ const logoutUser = async () => {
   } catch (error) {}
 }
 export default function TokenId({nft}) {
+  const [size, setSize] = useState([0, 0])
   const {colorMode, toggleColorMode} = useColorMode()
   const {authenticate, isAuthenticated, logout, account, chainId, user} =
     useMoralis()
+  let trucatedAccount =
+    account?.substring(0, 6) +
+    '...' +
+    account?.substring(account.length - 4, account.length)
   const [state, setState] = useState()
   const imageURL =
     'https://gateway.pinata.cloud/ipfs/QmXL6pVeNPGodVsKY8eQhLfK3vWpDrRRSTxJGqJTkaJ31q/' +
@@ -233,6 +238,15 @@ export default function TokenId({nft}) {
     console.log(finalMetadata)
   }
 
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight])
+    }
+    window.addEventListener('resize', updateSize)
+    updateSize()
+    return () => window.removeEventListener('resize', updateSize)
+  }, [])
+
   useEffect(() => {
     fetchMetaDatas()
   }, [])
@@ -253,7 +267,12 @@ export default function TokenId({nft}) {
         <Box p="2">
           <Link href="/">
             <a>
-              <Heading color="lightblue">Christmas Flakes</Heading>
+              <Heading
+                color="lightblue"
+                fontSize={['md', 'lg', '3xl', '4xl', '4xl']}
+              >
+                Christmas Flakes
+              </Heading>
             </a>
           </Link>
         </Box>
@@ -277,7 +296,7 @@ export default function TokenId({nft}) {
             </Button>
           ) : (
             <Flex alignItems="center">
-              <Text mr="10px">{account}</Text>
+              <Text mr="10px">{trucatedAccount}</Text>
               <Button variant="ghost" colorScheme="blue" onClick={logoutUser}>
                 Logout
               </Button>
@@ -286,30 +305,82 @@ export default function TokenId({nft}) {
         </Box>
       </Flex>
       <body>
-        <Heading align="center" color="lightblue" mb="5px">
+        <Heading
+          align="center"
+          color="lightblue"
+          mb="5px"
+          mt="10px"
+          fontSize={['20px', '25px', '30px', '35px']}
+        >
           {' '}
           Christmas Flake #{nft.tokenId}
         </Heading>
         <SimpleGrid
-          columns={[1, 1, 1, 1, 2]}
-          spacing={['10px', '10px', '15px', '20px']}
-          width={['80%', '80%', '80%', '80%', '95%', '85%']}
+          columns={[1, 1, 1, 2, 2]}
+          spacing={['50px', '10px', '15px', '0px']}
           m="auto"
+          pr="10px"
+          pl="10px"
           mb="10px"
+          mt={['5px', '10px', '10px', '15px', '20px']}
+          maxW="1500px"
         >
-          <Box
-            height="100%"
-            width="100%"
-            className={styles.videoWrapper}
-            boxShadow="md"
-            rounded="md"
-            _hover={{
-              boxShadow: '0 8px 16px 0 rgba(0,0,0,0.2)',
-              transition: '0.3s',
-            }}
-          >
-            <iframe height="100%" width="100%" src={imageURL}></iframe>
-          </Box>
+          <Flex direction="column" alignItems="center">
+            <Box
+              boxShadow="md"
+              rounded="md"
+              _hover={{
+                boxShadow: '0 8px 16px 0 rgba(0,0,0,0.2)',
+                transition: '0.3s',
+              }}
+            >
+              <Box
+                h={[
+                  size[0] / 1.2,
+                  size[0] / 1.4,
+                  size[0] / 1.9,
+                  size[0] / 2.5,
+                  size[0] / 2.5,
+                  size[0] / 3,
+                ]}
+                w={[
+                  size[0] / 1.2,
+                  size[0] / 1.4,
+                  size[0] / 1.9,
+                  size[0] / 2.5,
+                  size[0] / 2.5,
+                  size[0] / 3,
+                ]}
+              >
+                <SnowFlake
+                  className={styles.card}
+                  png={nft.tokenId}
+                ></SnowFlake>
+              </Box>
+              <Flex justify="center" alignItems="center">
+                <Text
+                  color="lightblue"
+                  fontWeight="bold"
+                  fontSize={['md', 'lg', 'lg', 'xl']}
+                >
+                  Christmas Flake #{nft.tokenId}
+                </Text>
+                <Link href={`/}`}>
+                  <a>
+                    <Button
+                      variant="ghost"
+                      color="lightblue"
+                      fontSize={['md', 'lg', 'lg', 'xl']}
+                      fontWeight="bold"
+                    >
+                      Home
+                    </Button>
+                  </a>
+                </Link>
+              </Flex>
+            </Box>
+          </Flex>
+
           <SimpleGrid
             boxShadow="md"
             columns={[1, 2, 3]}
