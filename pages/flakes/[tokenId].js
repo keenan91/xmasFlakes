@@ -365,7 +365,7 @@ export default function TokenId({nft}) {
                 >
                   Christmas Flake #{nft.tokenId}
                 </Text>
-                <Link href={`/}`}>
+                <Link href={`/`}>
                   <a>
                     <Button
                       variant="ghost"
