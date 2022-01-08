@@ -127,7 +127,7 @@ export default function Home() {
           tokenIdArray.push(i)
         }
       }
-      if (tokenIdArray.length == 11) {
+      if (tokenIdArray.length == 2) {
         setMintDisabled(true)
       }
       setTokenIdOwned(tokenIdArray)
