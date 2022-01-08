@@ -38,7 +38,7 @@ let signer
 let contract
 
 const contractAddress =
-  '0x9123Da6F29A6CD305Da6c7E20692eFBC9EF4A434'.toLowerCase()
+  '0xCEb4Bf449846897eef07267e513BADb523826244'.toLowerCase()
 export default function Home() {
   const [size, setSize] = useState([0, 0])
   const [state, setState] = useState('idle')
