@@ -1603,7 +1603,7 @@ export default function SnowFlake({png}) {
           width: '100%',
           background:
             'url(' +
-            'https://gateway.pinata.cloud/ipfs/QmT62kpVAwpC2AZ9son8J8VNqNitjR5keKW7mZ1R4L1vta/' +
+            'https://gateway.ipfs.io/ipfs/QmT62kpVAwpC2AZ9son8J8VNqNitjR5keKW7mZ1R4L1vta/' +
             png +
             '.png' +
             ')',

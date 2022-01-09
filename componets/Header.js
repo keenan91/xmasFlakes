@@ -1603,7 +1603,7 @@ export default function Header({png}) {
           width: '100%',
           background:
             'url(' +
-            'https://gateway.pinata.cloud/ipfs/QmT8Uus6gL1t4so4AzS4XnMGj3ndMuxZKgF2CP8zW28L7u' +
+            'https://gateway.ipfs.io/ipfs/QmT8Uus6gL1t4so4AzS4XnMGj3ndMuxZKgF2CP8zW28L7u' +
             ')',
           backgroundSize: 'cover',
         }}
