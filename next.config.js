@@ -1,6 +1,6 @@
 module.exports = {
   reactSloppyMode: true,
-  exportTrailingSlash: true,
+  trailingSlash: true,
   exportPathMap: function () {
     return {'/': {page: '/'}}
   },

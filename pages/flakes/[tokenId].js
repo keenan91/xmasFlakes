@@ -248,7 +248,7 @@ export default function TokenId({nft}) {
     window.addEventListener('resize', updateSize)
     updateSize()
     return () => window.removeEventListener('resize', updateSize)
-  }, [])
+  }, [isAuthenticated])
 
   return (
     <>
@@ -364,7 +364,7 @@ export default function TokenId({nft}) {
                 >
                   Christmas Flake #{nft.tokenId}
                 </Text>
-                <Link href={`/`}>
+                <Link href={`/`} replace={true}>
                   <a>
                     <Button
                       variant="ghost"

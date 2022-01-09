@@ -19,9 +19,8 @@ import {
   BeatLoader,
 } from '@chakra-ui/react'
 
-export default function SnowFlake({png}) {
+export default function SnowFlake({png, size}) {
   let idTag = 'particles-js-canvas-el' + png
-  console.log(idTag)
   if (typeof window !== 'undefined') {
     var pJS = function (tag_id, params) {
       var canvas_el = document.getElementById(idTag)

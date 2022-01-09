@@ -19,9 +19,8 @@ import {
   BeatLoader,
 } from '@chakra-ui/react'
 
-export default function Header({png}) {
+export default function Header({png, size}) {
   let idTag = 'particles-js-canvas-el' + png
-  console.log(idTag)
   if (typeof window !== 'undefined') {
     var pJS = function (tag_id, params) {
       var canvas_el = document.getElementById(idTag)

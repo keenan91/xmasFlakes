@@ -39,6 +39,7 @@ let contract
 
 const contractAddress =
   '0xCEb4Bf449846897eef07267e513BADb523826244'.toLowerCase()
+
 export default function Home() {
   const [size, setSize] = useState([0, 0])
   const [state, setState] = useState('idle')
@@ -58,6 +59,16 @@ export default function Home() {
   } = useNFTBalances()
   const {authenticate, isAuthenticated, logout, account, chainId, user} =
     useMoralis()
+  // const memoSnowflake = useMemo(() => {
+  //   return <SnowFlake png="111" />
+  // }, [size])
+  // const memoSnowflake2 = useMemo(() => {
+  //   return <SnowFlake png="1" />
+  // }, [size])
+  // const memoHeader = useMemo(() => {
+  //   return <Header png={97} height={state[0] / 8}></Header>
+  // }, [size])
+
   let trucatedAccount =
     account?.substring(0, 6) +
     '...' +
@@ -236,7 +247,7 @@ export default function Home() {
       <Box zIndex="4" width={['90%', '90%', '80%']} m="auto">
         <Flex alignItems="center" justify="center">
           <Box h={size[0] / 5} w={size[0] / 5}>
-            <SnowFlake png={100}></SnowFlake>
+            <SnowFlake png="1" />
           </Box>
           <Flex
             direction="column"
@@ -276,7 +287,7 @@ export default function Home() {
           </Flex>
 
           <Box h={size[0] / 5} w={size[0] / 5}>
-            <SnowFlake png={101}></SnowFlake>
+            <SnowFlake png="111" />
           </Box>
         </Flex>
         {state != 'loading' && state != 'idle' ? (
