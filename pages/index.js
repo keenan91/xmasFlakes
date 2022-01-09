@@ -59,6 +59,7 @@ export default function Home() {
   } = useNFTBalances()
   const {authenticate, isAuthenticated, logout, account, chainId, user} =
     useMoralis()
+  console.log(chainId)
   // const memoSnowflake = useMemo(() => {
   //   return <SnowFlake png="111" />
   // }, [size])
@@ -78,6 +79,9 @@ export default function Home() {
 
   //testfunction()
   const connect = async () => {
+    if (chainId != '0x13881') {
+      return toast.error('Please connect to the Mumbai network')
+    }
     try {
       authenticate({signingMessage: 'Connecting Wallet'})
     } catch (error) {
