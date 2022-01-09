@@ -245,19 +245,31 @@ export default function Home() {
             h={[size[0] / 3, size[0] / 5, size[0] / 5]}
             w={[size[0] / 3, size[0] / 5, size[0] / 5]}
           >
-            <Button
-              fontSize={['3xl', '3xl', '4xl', '5xl', '5xl']}
-              size="lg"
-              color="lightblue"
-              variant="ghost"
-              onClick={mint}
-              align="center"
-              isDisabled={mintDisabled}
-              isLoading={state === 'loading'}
-            >
-              Mint
-            </Button>
-
+            {isAuthenticated ? (
+              <Button
+                fontSize={['3xl', '3xl', '4xl', '5xl', '5xl']}
+                size="lg"
+                color="lightblue"
+                variant="ghost"
+                onClick={mint}
+                align="center"
+                isDisabled={mintDisabled}
+                isLoading={state === 'loading'}
+              >
+                Mint
+              </Button>
+            ) : (
+              <Button
+                fontSize={['3xl', '3xl', '4xl', '5xl', '5xl']}
+                size="lg"
+                color="lightblue"
+                variant="ghost"
+                onClick={connect}
+                align="center"
+              >
+                Mint
+              </Button>
+            )}
             <Text align="center" color="lightblue" fontSize="2xl">
               {nftBalance}/1111
             </Text>
