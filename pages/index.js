@@ -38,7 +38,7 @@ let signer
 let contract
 
 const contractAddress =
-  '0xCEb4Bf449846897eef07267e513BADb523826244'.toLowerCase()
+  '0x255A583d5119454aF680D3696d805BdBe8B93B44'.toLowerCase()
 
 export default function Home() {
   const [size, setSize] = useState([0, 0])
@@ -60,15 +60,15 @@ export default function Home() {
   const {authenticate, isAuthenticated, logout, account, chainId, user} =
     useMoralis()
   console.log(chainId)
-  // const memoSnowflake = useMemo(() => {
-  //   return <SnowFlake png="111" />
-  // }, [size])
-  // const memoSnowflake2 = useMemo(() => {
-  //   return <SnowFlake png="1" />
-  // }, [size])
-  // const memoHeader = useMemo(() => {
-  //   return <Header png={97} height={state[0] / 8}></Header>
-  // }, [size])
+  const memoSnowflake = useMemo(() => {
+    return <SnowFlake png="111" />
+  }, [size])
+  const memoSnowflake2 = useMemo(() => {
+    return <SnowFlake png="10" />
+  })
+  const memoHeader = useMemo(() => {
+    return <Header png={97} height={state[0] / 8}></Header>
+  }, [size])
 
   let trucatedAccount =
     account?.substring(0, 6) +
@@ -176,6 +176,21 @@ export default function Home() {
   }
 
   useEffect(() => {
+    // if (
+    //   window.matchMedia &&
+    //   window.matchMedia('(prefers-color-scheme: dark)').matches &&
+    //   colorMode !== 'dark'
+    // ) {
+    //   toggleColorMode()
+    // }
+    // if (
+    //   window.matchMedia &&
+    //   window.matchMedia('(prefers-color-scheme: light)').matches &&
+    //   colorMode !== 'light'
+    // ) {
+    //   toggleColorMode()
+    // }
+
     getMintCountAndTokenOwners()
     function updateSize() {
       setSize([window.innerWidth, window.innerHeight])
@@ -212,13 +227,13 @@ export default function Home() {
         )}
         <Box>
           {!isAuthenticated ? (
-            <Button variant="ghost" colorScheme="blue" onClick={connect}>
+            <Button colorScheme="blue" onClick={connect}>
               Connect
             </Button>
           ) : (
             <Flex alignItems="center">
               <Text mr="10px">{trucatedAccount}</Text>
-              <Button variant="ghost" colorScheme="blue" onClick={logoutUser}>
+              <Button colorScheme="blue" onClick={logoutUser}>
                 Logout
               </Button>
             </Flex>
@@ -251,7 +266,7 @@ export default function Home() {
       <Box zIndex="4" width={['90%', '90%', '80%']} m="auto">
         <Flex alignItems="center" justify="center">
           <Box h={size[0] / 5} w={size[0] / 5}>
-            <SnowFlake png="1" />
+            <SnowFlake png="1111" />
           </Box>
           <Flex
             direction="column"
@@ -294,50 +309,6 @@ export default function Home() {
             <SnowFlake png="111" />
           </Box>
         </Flex>
-        {state != 'loading' && state != 'idle' ? (
-          <>
-            <Text
-              mt="10px"
-              mb="20px"
-              fontSize={['lg', 'lg', '2xl']}
-              align="center"
-              color="lightblue"
-            >
-              Your freshly cystalized Christmas Flake
-            </Text>
-            <Box mt="30px" w={['80%', '80%', '80%', '70%', '50%']} m="auto">
-              <Box
-                boxShadow="md"
-                rounded="md"
-                _hover={{
-                  boxShadow: '0 8px 16px 0 rgba(0,0,0,0.2)',
-                  transition: '0.3s',
-                }}
-              >
-                <Box className={styles.videoWrapper}>
-                  <iframe src={state}></iframe>
-                </Box>
-                <Flex justify="space-around" alignItems="center">
-                  <Text color="lightblue" fontWeight="bold" fontSize="xl">
-                    Christmas Flake #{nftBalance}
-                  </Text>
-                  <Link href={`/flakes/${nftBalance}`}>
-                    <a>
-                      <Button
-                        variant="ghost"
-                        color="lightblue"
-                        fontSize="xl"
-                        fontWeight="bold"
-                      >
-                        View
-                      </Button>
-                    </a>
-                  </Link>
-                </Flex>
-              </Box>
-            </Box>
-          </>
-        ) : null}
       </Box>
       <main>
         {isAuthenticated ? (

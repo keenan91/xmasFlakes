@@ -1602,7 +1602,7 @@ export default function SnowFlake({png, size}) {
           width: '100%',
           background:
             'url(' +
-            'https://gateway.ipfs.io/ipfs/QmT62kpVAwpC2AZ9son8J8VNqNitjR5keKW7mZ1R4L1vta/' +
+            'https://cloudflare-ipfs.com/ipfs/QmT62kpVAwpC2AZ9son8J8VNqNitjR5keKW7mZ1R4L1vta/' +
             png +
             '.png' +
             ')',

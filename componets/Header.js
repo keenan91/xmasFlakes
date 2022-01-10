@@ -1602,7 +1602,7 @@ export default function Header({png, size}) {
           width: '100%',
           background:
             'url(' +
-            'https://gateway.ipfs.io/ipfs/QmT8Uus6gL1t4so4AzS4XnMGj3ndMuxZKgF2CP8zW28L7u' +
+            'https://cloudflare-ipfs.com/ipfs/QmT8Uus6gL1t4so4AzS4XnMGj3ndMuxZKgF2CP8zW28L7u' +
             ')',
           backgroundSize: 'cover',
         }}

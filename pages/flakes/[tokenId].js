@@ -241,6 +241,20 @@ export default function TokenId({nft}) {
   useLayoutEffect(() => {}, [])
 
   useEffect(() => {
+    // if (
+    //   window.matchMedia &&
+    //   window.matchMedia('(prefers-color-scheme: dark)').matches &&
+    //   colorMode !== 'dark'
+    // ) {
+    //   toggleColorMode()
+    // }
+    // if (
+    //   window.matchMedia &&
+    //   window.matchMedia('(prefers-color-scheme: light)').matches &&
+    //   colorMode !== 'light'
+    // ) {
+    //   toggleColorMode()
+    // }
     fetchMetaDatas()
     function updateSize() {
       setSize([window.innerWidth, window.innerHeight])
