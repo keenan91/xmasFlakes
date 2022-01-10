@@ -1,6 +1,7 @@
 import React from 'react'
 import theme from '.././theme'
 import styles from '../styles/Home.module.css'
+import {useEffect} from 'react'
 import Script from 'next/script'
 import {
   Box,
@@ -1592,6 +1593,23 @@ export default function Header({png, size}) {
     } catch (error) {}
     /* particles.js variables with default values */
   }
+
+  useEffect(() => {
+    return function cleanup() {
+      ;(function () {
+        return (
+          window.requestAnimationFrame ||
+          window.webkitRequestAnimationFrame ||
+          window.mozRequestAnimationFrame ||
+          window.oRequestAnimationFrame ||
+          window.msRequestAnimationFrame ||
+          function (callback) {
+            window.setTimeout(callback, 1000 / 60)
+          }
+        )
+      })()
+    }
+  })
 
   return (
     <>

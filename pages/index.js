@@ -1,7 +1,8 @@
+import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
-import {useState, useEffect, useMemo, useLayoutEffect} from 'react'
+import {useState, useEffect, useMemo, useLayoutEffect, useCallback} from 'react'
 import Web3Modal from 'web3modal'
 import {ethers} from 'ethers'
 import Web3 from 'web3'
@@ -38,7 +39,7 @@ let signer
 let contract
 
 const contractAddress =
-  '0x9Bb5472CaC0F141d85be68738d8e0671E2541e91'.toLowerCase()
+  '0x6cB2609E7adbA04e9e1b2b88B166e1676A1bDA10'.toLowerCase()
 
 export default function Home() {
   const [size, setSize] = useState([1800, 969])
@@ -57,10 +58,20 @@ export default function Home() {
     isLoading,
     isFetching,
   } = useNFTBalances()
-  const {authenticate, isAuthenticated, logout, account, chainId, user} =
-    useMoralis()
+  const {
+    authenticate,
+    isAuthenticated,
+    logout,
+    account,
+    chainId,
+    user,
+    authError,
+  } = useMoralis()
   console.log(chainId)
-  const memoSnowflake = useMemo(() => {
+  if (authError) {
+    toast.error(authError.message)
+  }
+  /*  const memoSnowflake = useMemo(() => {
     return <SnowFlake png="111" />
   }, [size])
   const memoSnowflake2 = useMemo(() => {
@@ -70,6 +81,11 @@ export default function Home() {
     return <Header png={97} height={state[0] / 8}></Header>
   }, [size])
 
+  const memoizedCallback = useCallback(() => {
+    return <SnowFlake png="10" />
+  }, [])
+  const MemoizedSnowflake = React.memo(SnowFlake)
+ */
   let trucatedAccount =
     account?.substring(0, 6) +
     '...' +
@@ -242,7 +258,7 @@ export default function Home() {
       </Flex>
 
       <Box h={size[0] / 3.5}>
-        <Header png={97} height={state[0] / 8}></Header>
+        <Header png={97}></Header>
       </Box>
 
       <Heading
@@ -266,7 +282,8 @@ export default function Home() {
       <Box zIndex="4" width={['90%', '90%', '80%']} m="auto">
         <Flex alignItems="center" justify="center">
           <Box h={size[0] / 5} w={size[0] / 5}>
-            <SnowFlake png="1111" />
+            {/*   <MemoizedSnowflake png="1111" size={size} /> */}
+            <SnowFlake png="1111" size={size} />
           </Box>
           <Flex
             direction="column"
@@ -306,7 +323,8 @@ export default function Home() {
           </Flex>
 
           <Box h={size[0] / 5} w={size[0] / 5}>
-            <SnowFlake png="111" />
+            {/* <MemoizedSnowflake png="111" size={size} /> */}
+            <SnowFlake png="111" size={size} />
           </Box>
         </Flex>
       </Box>
@@ -364,6 +382,7 @@ export default function Home() {
                             <SnowFlake
                               className={styles.card}
                               png={nft}
+                              size={size}
                             ></SnowFlake>
                           </Box>
                           <Flex justify="space-around" alignItems="center">
