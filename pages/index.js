@@ -38,10 +38,10 @@ let signer
 let contract
 
 const contractAddress =
-  '0x255A583d5119454aF680D3696d805BdBe8B93B44'.toLowerCase()
+  '0x9Bb5472CaC0F141d85be68738d8e0671E2541e91'.toLowerCase()
 
 export default function Home() {
-  const [size, setSize] = useState([0, 0])
+  const [size, setSize] = useState([1800, 969])
   const [state, setState] = useState('idle')
   const [nftBalance, setNftBalance] = useState(0)
   const [tokenIdOwned, setTokenIdOwned] = useState()
