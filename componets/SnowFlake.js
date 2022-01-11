@@ -1596,7 +1596,7 @@ export default function SnowFlake({png, size}) {
   return (
     <>
       <canvas
-        id={idTag}
+        id={'particles-js-canvas-el' + png}
         style={{
           height: '100%',
           width: '100%',
