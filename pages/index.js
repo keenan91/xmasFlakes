@@ -231,7 +231,7 @@ export default function Home() {
           ) : (
             <Flex alignItems="center">
               <Text mr="10px">
-                {trucatedAccount == undefined ? logoutUser() : trucatedAccount}
+                {trucatedAccount == null ? logoutUser() : trucatedAccount}
               </Text>
               <Button colorScheme="blue" onClick={logoutUser}>
                 Logout
