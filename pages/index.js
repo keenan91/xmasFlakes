@@ -68,6 +68,7 @@ export default function Home() {
     authError,
   } = useMoralis()
 
+  console.log(account)
   let trucatedAccount =
     account?.substring(0, 6) +
     '...' +
@@ -229,7 +230,9 @@ export default function Home() {
             </Button>
           ) : (
             <Flex alignItems="center">
-              <Text mr="10px">{trucatedAccount}</Text>
+              <Text mr="10px">
+                {trucatedAccount == undefined ? logoutUser() : trucatedAccount}
+              </Text>
               <Button colorScheme="blue" onClick={logoutUser}>
                 Logout
               </Button>
