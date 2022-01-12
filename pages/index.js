@@ -68,11 +68,11 @@ export default function Home() {
     authError,
   } = useMoralis()
 
-  console.log(user)
+  console.log(user?.attributes?.accounts[0])
   let trucatedAccount =
-    account?.substring(0, 6) +
+    user?.attributes?.accounts[0]?.substring(0, 6) +
     '...' +
-    account?.substring(account.length - 4, account.length)
+    user?.attributes?.accounts[0]?.substring(account.length - 4, account.length)
   const {colorMode, toggleColorMode} = useColorMode()
   useLayoutEffect(() => {}, [])
 
@@ -128,7 +128,7 @@ export default function Home() {
       let tokenIdArray = []
       for (let i = 1; i <= mintCount; i++) {
         let tokenIdOwner = await NameContract.methods.ownerOf(i).call()
-        if (tokenIdOwner.toLowerCase() == account) {
+        if (tokenIdOwner.toLowerCase() == user?.attributes?.accounts[0]) {
           tokenIdArray.push(i)
         }
       }
@@ -230,9 +230,7 @@ export default function Home() {
             </Button>
           ) : (
             <Flex alignItems="center">
-              <Text mr="10px">
-                {trucatedAccount == null ? logoutUser() : trucatedAccount}
-              </Text>
+              <Text mr="10px">{trucatedAccount}</Text>
               <Button colorScheme="blue" onClick={logoutUser}>
                 Logout
               </Button>
