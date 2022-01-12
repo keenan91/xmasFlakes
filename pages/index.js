@@ -68,7 +68,7 @@ export default function Home() {
     authError,
   } = useMoralis()
 
-  console.log(account)
+  console.log(user)
   let trucatedAccount =
     account?.substring(0, 6) +
     '...' +
