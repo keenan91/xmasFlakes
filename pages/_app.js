@@ -2,8 +2,8 @@ import '../styles/globals.css'
 import {ChakraProvider} from '@chakra-ui/react'
 import {MoralisProvider} from 'react-moralis'
 import {Toaster} from 'react-hot-toast'
-const serverUrl = 'https://vr7egmmrq6rb.usemoralis.com:2053/server'
-const appId = '1ZDGX85q7i13FpOb2eohZcdbHsgoPvRJxtNC16x2'
+const serverUrl = 'https://gvrhkyktpyjl.usemoralis.com:2053/server'
+const appId = 'Q4SFp1T2sY07hT7TEF9kVtNFcWsdDd6etdYGHCxS'
 function MyApp({Component, pageProps}) {
   return (
     <ChakraProvider>

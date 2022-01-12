@@ -234,8 +234,6 @@ export default function TokenId({nft}) {
     })
     let finalMetadata = [].concat(...metaDataRarity)
     setState(finalMetadata)
-
-    console.log(finalMetadata)
   }
 
   useLayoutEffect(() => {}, [])
@@ -269,8 +267,8 @@ export default function TokenId({nft}) {
       <Head>
         <title> Christmas Flakes</title>
         <meta
-          name="Which Christmas flake will cause the avlanche"
-          content="flakes"
+          name="Description"
+          content="Generative art collection of Snowflake"
         />
       </Head>
 
@@ -317,7 +315,7 @@ export default function TokenId({nft}) {
           )}
         </Box>
       </Flex>
-      <body>
+      <Box>
         <Heading
           align="center"
           color="lightblue"
@@ -450,7 +448,7 @@ export default function TokenId({nft}) {
             Powered By UniMatrix Art and HashLips Engine
           </Text>
         </footer>
-      </body>
+      </Box>
     </>
   )
 }
@@ -468,7 +466,7 @@ export async function getStaticProps({params}) {
 export async function getStaticPaths() {
   let paths = []
 
-  for (let i = 1; i < 1000; i++) {
+  for (let i = 1; i <= 1111; i++) {
     paths.push({
       params: {
         tokenId: i.toString(),
