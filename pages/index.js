@@ -72,7 +72,10 @@ export default function Home() {
   let trucatedAccount =
     user?.attributes?.accounts[0]?.substring(0, 6) +
     '...' +
-    user?.attributes?.accounts[0]?.substring(account.length - 4, account.length)
+    user?.attributes?.accounts[0]?.substring(
+      user?.attributes?.accounts[0].length - 4,
+      user?.attributes?.accounts[0].length,
+    )
   const {colorMode, toggleColorMode} = useColorMode()
   useLayoutEffect(() => {}, [])
 
@@ -331,7 +334,7 @@ export default function Home() {
                 spacing={['20px', '20px', '20px', '20px']}
               >
                 {tokenIdOwned &&
-                  tokenIdOwned.map((nft, index) => {
+                  tokenIdOwned?.map((nft, index) => {
                     return (
                       <Flex
                         key={index}
