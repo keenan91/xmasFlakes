@@ -302,7 +302,7 @@ export default function TokenId({nft}) {
         )}
         <Box>
           {!isAuthenticated ? (
-            <Button variant="ghost" colorScheme="blue" onClick={connect}>
+            <Button colorScheme="blue" onClick={logoutUser}>
               Connect
             </Button>
           ) : (

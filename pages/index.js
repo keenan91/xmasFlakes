@@ -77,8 +77,8 @@ export default function Home() {
 
   //testfunction()
   const connect = async () => {
-    if (chainId != '0x13881') {
-      return toast.error('Please connect to the Mumbai network')
+    if (chainId != '0x89') {
+      return toast.error('Please switch to the Polygon Mainnet network')
     }
     try {
       authenticate({signingMessage: 'Connecting Wallet'})
