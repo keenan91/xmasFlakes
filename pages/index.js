@@ -255,6 +255,21 @@ export default function Home() {
       >
         The Christmas spirit lasts all year long
       </Heading>
+      <Link
+        href={`https://polygonscan.com/address/0x7EC7AcAF6e53e0B8a4fB8AC319fdd80958B38e03#code`}
+      >
+        <a>
+          <Text
+            align="center"
+            color="lightblue"
+            mb={['5px', '7px', '10px']}
+            fontSize={['sm', 'md', 'lg']}
+          >
+            0x7EC7AcAF6e53e0B8a4fB8AC319fdd80958B38e03
+          </Text>
+        </a>
+      </Link>
+
       <Text
         align="center"
         color="lightblue"
