@@ -157,8 +157,8 @@ export default function Home() {
     provider = new ethers.providers.Web3Provider(connection)
     signer = provider.getSigner()
     contract = new ethers.Contract(contractAddress, NFT.abi, signer)
-
-    let transaction = await contract.createToken()
+    var options = {gasPrice: '300000000000', gasLimit: '50000'}
+    let transaction = await contract.createToken(options)
     toast.success('Minting this may take 30 seconds')
     setState('loading')
     let tx = await transaction.wait()
